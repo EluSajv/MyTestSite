@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Тестовый сайт</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <p>Главная</p>
+      <nav>
+        Навигация
+      </nav>
+    </header>
+    <main>
+      <p>Вот тут находится мейн</p>
+    </main>
+    <footer>
+      Подвал сайта
+    </footer>
+  </body>
+</html>
