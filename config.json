@@ -1,0 +1,12 @@
+{
+    "server": "",
+    "static": "",
+    "uri": {
+        "mainbar": "$static/images/ui/mainbar",
+        "skill": "$static/images/ui/skill",
+        "uitemplatetexture": "$static/images/uitemplatetexture",
+        "image": "$static/images",
+        "js": "$server/js",
+        "css": "$server/css"
+    }
+}

@@ -1,0 +1,51 @@
+<dnsim-loading>
+<dnsim-choose-class ng-show="!ctrl.job" job="ctrl.job" on-set-job="ctrl.setJob()"></dnsim-choose-class>
+
+<h3 ng-if="ctrl.job">{{ctrl.job.name}} builds
+  <small>
+    <button class="btn btn-link" ng-click="ctrl.job = null">
+      &raquo;change class
+    </button>
+  </small>
+</h3>
+<span ng-if="ctrl.job && !ctrl.jobBuilds">loading..</span>
+
+<p ng-if="ctrl.job && ctrl.jobBuilds">
+<label>filter</label>
+<input class="form-control" ng-model="ctrl.filter"></input>
+<label class="form-check-label">
+  <input type="checkbox" ng-change="ctrl.reloadBuilds()" class="form-check-input" ng-model="ctrl.includeOldBuilds">
+  include old builds
+</label>
+</p>
+
+<div class="container-fluid" ng-if="ctrl.job && ctrl.jobBuilds">
+  <div class="row" infinite-scroll="ctrl.showMoreResults()">
+    <div class="col-xs-12 col-md-6" ng-repeat="build in ctrl.getFilteredBuilds() track by $index">
+    <a class="list-group-item" ng-href="published/?uid={{build.uid}}&buildName={{build.name | escape}}">
+      <div>
+      <h4>
+        {{build.name}}
+        <small>
+          <span ng-if="build.data.guild">
+            [{{build.data.guild}}]
+          </span>
+          {{build.data.region}}
+        </small>
+      </h4>
+      <em>
+      {{build.data.about}}
+      </em>
+      </div>
+    </a>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="ctrl.totalNumResults >= ctrl.maxDisplay">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
+    <button class="btn btn-link" ng-click="ctrl.showMoreResults(20)">show more</button> | 
+    <button class="btn btn-link" ng-click="ctrl.showMoreResults(200)">show lots more</button>
+  </div>
+</div>
+</dnsim-loading>
